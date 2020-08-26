@@ -10,6 +10,7 @@ clientReplicas: 1
 masterReplicas: 1
 dataReplicas: 1
 dataVolumeSize: 1Gi
+masterVolumeSize: 1Gi
 javaOpts: "-Xms256m -Xmx256m"
 
 # Deploy data nodes across zones
