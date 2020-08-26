@@ -404,6 +404,13 @@ func (k *K8sutil) CreateKibanaDeployment(baseImage, clusterName, namespace strin
 			},
 			Spec: appsv1.DeploymentSpec{
 				Replicas: &replicaCount,
+				Selector: &metav1.LabelSelector{
+					MatchLabels: map[string]string{
+						"component": component,
+						"role":      "kibana",
+						"name":      deploymentName,
+					},
+				},
 				Template: v1.PodTemplateSpec{
 					ObjectMeta: metav1.ObjectMeta{
 						Labels: map[string]string{
@@ -537,6 +544,13 @@ func (k *K8sutil) CreateCerebroDeployment(baseImage, clusterName, namespace, cer
 			},
 			Spec: appsv1.DeploymentSpec{
 				Replicas: &replicaCount,
+				Selector: &metav1.LabelSelector{
+					MatchLabels: map[string]string{
+						"component": component,
+						"role":      "cerebro",
+						"name":      deploymentName,
+					},
+				},
 				Template: v1.PodTemplateSpec{
 					ObjectMeta: metav1.ObjectMeta{
 						Labels: map[string]string{
